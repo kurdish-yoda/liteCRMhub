@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Quick Leads</title>
+        <link rel="stylesheet" href="/static/css/style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>
+                    <svg
+                        class="logo-icon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#ffb700"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        style="margin-right: 8px"
+                    >
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                    </svg>
+                    Quick Leads
+                </h1>
+                <div class="header-actions">
+                    <nav>
+                        <ul>
+                            <li><a href="/" class="active">Dashboard</a></li>
+                            <li><a href="/leads">Leads</a></li>
+                        </ul>
+                    </nav>
+                    <div class="theme-toggle-container">
+                        <button
+                            id="theme-toggle"
+                            class="theme-toggle"
+                            aria-label="Toggle theme"
+                        >
+                            <svg
+                                id="sun-icon"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="lucide lucide-sun"
+                            >
+                                <circle cx="12" cy="12" r="4" />
+                                <path d="M12 2v2" />
+                                <path d="M12 20v2" />
+                                <path d="m4.93 4.93 1.41 1.41" />
+                                <path d="m17.66 17.66 1.41 1.41" />
+                                <path d="M2 12h2" />
+                                <path d="M20 12h2" />
+                                <path d="m6.34 17.66-1.41 1.41" />
+                                <path d="m19.07 4.93-1.41 1.41" />
+                            </svg>
+                            <svg
+                                id="moon-icon"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="lucide lucide-moon"
+                                style="display: none"
+                            >
+                                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <main>
+                <div class="dashboard">
+                    <div class="stats-container">
+                        <div class="stat-card" id="total-leads">
+                            <h3>Total Leads</h3>
+                            <p class="stat-value">0</p>
+                        </div>
+                        <div class="stat-card" id="new-leads">
+                            <h3>New</h3>
+                            <p class="stat-value">0</p>
+                        </div>
+                        <div class="stat-card" id="contacted-leads">
+                            <h3>Contacted</h3>
+                            <p class="stat-value">0</p>
+                        </div>
+                        <div class="stat-card" id="recontacted-leads">
+                            <h3>Re Contacted</h3>
+                            <p class="stat-value">0</p>
+                        </div>
+                        <div class="stat-card" id="qualified-leads">
+                            <h3>Qualified</h3>
+                            <p class="stat-value">0</p>
+                        </div>
+                        <div class="stat-card" id="onice-leads">
+                            <h3>On Ice</h3>
+                            <p class="stat-value">0</p>
+                        </div>
+                        <div class="stat-card" id="closed-leads">
+                            <h3>Closed</h3>
+                            <p class="stat-value">0</p>
+                        </div>
+                    </div>
+
+                    <div class="recent-leads">
+                        <h2>Recent Leads</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Company</th>
+                                    <th>Status</th>
+                                    <th>Created</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recent-leads-table">
+                                <!-- Leads will be populated here -->
+                            </tbody>
+                        </table>
+                        <a href="/leads" class="button">View All Leads</a>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script src="/static/dist/js/theme.js"></script>
+        <script src="/static/dist/js/index.js"></script>
+    </body>
+</html>

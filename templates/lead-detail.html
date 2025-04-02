@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Lead Details - Quick Leads</title>
+        <link rel="stylesheet" href="/static/css/style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>
+                    <svg
+                        class="logo-icon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#ffb700"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        style="margin-right: 8px"
+                    >
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                    </svg>
+                    Quick Leads
+                </h1>
+                <div class="header-actions">
+                    <nav>
+                        <ul>
+                            <li><a href="/">Dashboard</a></li>
+                            <li><a href="/leads">Leads</a></li>
+                        </ul>
+                    </nav>
+                    <button
+                        id="theme-toggle"
+                        class="theme-toggle"
+                        aria-label="Toggle theme"
+                    >
+                        <svg
+                            id="sun-icon"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-sun"
+                        >
+                            <circle cx="12" cy="12" r="4" />
+                            <path d="M12 2v2" />
+                            <path d="M12 20v2" />
+                            <path d="m4.93 4.93 1.41 1.41" />
+                            <path d="m17.66 17.66 1.41 1.41" />
+                            <path d="M2 12h2" />
+                            <path d="M20 12h2" />
+                            <path d="m6.34 17.66-1.41 1.41" />
+                            <path d="m19.07 4.93-1.41 1.41" />
+                        </svg>
+                        <svg
+                            id="moon-icon"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-moon"
+                            style="display: none"
+                        >
+                            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                        </svg>
+                    </button>
+                </div>
+            </header>
+
+            <main>
+                <div class="lead-detail-header">
+                    <a href="/leads" class="back-link">&larr; Back to Leads</a>
+                    <h2 id="lead-name">Lead Details</h2>
+                    <button id="edit-lead-btn" class="button">Edit</button>
+                </div>
+
+                <div class="lead-detail-container">
+                    <div class="lead-info">
+                        <div class="info-card">
+                            <h3>Contact Information</h3>
+                            <div class="info-row">
+                                <span class="info-label">Name:</span>
+                                <span
+                                    id="detail-name"
+                                    class="info-value"
+                                ></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Email:</span>
+                                <span
+                                    id="detail-email"
+                                    class="info-value"
+                                ></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Phone:</span>
+                                <span
+                                    id="detail-phone"
+                                    class="info-value"
+                                ></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Company:</span>
+                                <span
+                                    id="detail-company"
+                                    class="info-value"
+                                ></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Status:</span>
+                                <span
+                                    id="detail-status"
+                                    class="info-value status-badge"
+                                ></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Created:</span>
+                                <span
+                                    id="detail-created"
+                                    class="info-value"
+                                ></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lead-notes">
+                        <div class="notes-header">
+                            <h3>Notes</h3>
+                            <button id="add-note-btn" class="button button-sm">
+                                Add Note
+                            </button>
+                        </div>
+
+                        <div id="notes-container" class="notes-list">
+                            <!-- Notes will be populated here -->
+                        </div>
+
+                        <div id="note-form-container" class="note-form hidden">
+                            <form id="note-form">
+                                <textarea
+                                    id="note-content"
+                                    placeholder="Enter your note here..."
+                                    required
+                                ></textarea>
+                                <div class="form-actions">
+                                    <button type="submit" class="button">
+                                        Save Note
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Edit Lead Modal -->
+        <div id="lead-modal" class="modal">
+            <div class="modal-content">
+                <span id="close-lead-modal" class="close">&times;</span>
+                <h2>Edit Lead</h2>
+                <form id="lead-form">
+                    <input type="hidden" id="lead-id" />
+                    <div class="form-group">
+                        <label for="name">Name*</label>
+                        <input type="text" id="name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" />
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" />
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" />
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select id="status">
+                            <option value="new">New</option>
+                            <option value="contacted">Contacted</option>
+                            <option value="recontacted">Re Contacted</option>
+                            <option value="qualified">Qualified</option>
+                            <option value="onice">On Ice</option>
+                            <option value="closed">Closed</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button
+                            type="button"
+                            id="delete-lead-btn"
+                            class="button button-destructive"
+                        >
+                            Delete Lead
+                        </button>
+                        <button type="submit" class="button">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="edit-note-modal" class="modal">
+            <div class="modal-content">
+                <span id="close-note-modal" class="close">&times;</span>
+                <h2>Edit Note</h2>
+                <form id="edit-note-form">
+                    <input type="hidden" id="edit-note-id" />
+                    <div class="form-group">
+                        <label for="edit-note-content">Note</label>
+                        <textarea
+                            id="edit-note-content"
+                            placeholder="Enter your note here..."
+                            required
+                        ></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="button">
+                            Save Changes
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script src="/static/dist/js/theme.js"></script>
+        <script src="/static/dist/js/lead-detail.js"></script>
+    </body>
+</html>
